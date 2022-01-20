@@ -3,7 +3,7 @@
 heatshield.py
 
 Practice coding a simple commandline TCP proxy. Started with the Black Hat Python example and updated and expanded
-code into Python 3. May expand upon this periodically.
+code from Python 2 into Python 3. May expand upon this periodically.
 
 """
 
@@ -35,7 +35,9 @@ class HeatShield():
 
         self.args = parser.parse_args()
 
-        if self.args.receive_first.casefold() == "true":
+        self.verify_args()
+
+        if self.args.receive_first.casefold() == "true" or self.args.receive_first.casefold() == "t":
             self.args.receive_first = True
         else:
             self.args.receive_first = False
