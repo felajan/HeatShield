@@ -15,7 +15,7 @@ __maintainer__ = "Felajan"
 __email__ = "felajan@protonmail.com"
 __status__ = "Development"
 __created_date__ = "2018-03-13"
-__modified_date__ = "2018-03-20"
+
 
 import sys
 import socket
@@ -48,9 +48,10 @@ class HeatShield():
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             server.bind((self.args.localhost, self.args.localport))
-        except:
+        except Exception as err:
             print("[***] Failed to listen on {}:{}".format(self.args.localhost, self.args.localport))
             print("[***] Check for other listening sockets or correct permissions.")
+            print("[***] Error: {}".format(err))
             sys.exit(0)
 
         print("[*] Listening on {}:{}".format(self.args.localhost, self.args.localport))
